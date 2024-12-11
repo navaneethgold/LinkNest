@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LN:posts</title>
+    <link rel="icon" href="https://res.cloudinary.com/du1tos77l/image/upload/v1732711305/icon2_y88pp3.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+        /* Target the entire scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px; /* Width of the vertical scrollbar */
+            height: 12px; /* Height of the horizontal scrollbar */
+        }
+        
+        /* Track (the background of the scrollbar) */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Light gray background */
+            border-radius: 10px; /* Rounded edges for the track */
+        }
+        
+        /* Thumb (the draggable handle) */
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* Medium gray color */
+            border-radius: 10px; /* Rounded edges for the thumb */
+        }
+        
+        /* Hover effect for the thumb */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Darker gray when hovered */
+        }
+    
+        body{
+            /* background-color: black; */
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            position: fixed; 
+            top: 0;         
+            left: 0;      
+            width: 230px;   
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #000000, #1c1c1c);
+            z-index: 2000;
+            border-right: 2px solid white;
+        }
+        .logo{
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 10px;
+            width: 230px;
+        }
+        .options{
+            width: 170px;   
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            /* align-items: center; */
+            flex-direction: column;
+            padding-left: 50px;
+        }
+        .name{
+            font-family:'Times New Roman', Times, serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 230px;
+
+        }
+        .home,.notes,.chatting,.settings,.newpost{
+            color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            transition: background-color 0.3s ease,color 0.3s ease;
+            border-radius: 10px;
+            padding: 2px;
+        }
+        .home:active,.notes:active,.chatting:active,.settings:active,.newpost:active{
+            transform: scale(0.95);
+        }
+        .but{
+            background-color: transparent;
+            color: white;
+            padding: 0;
+            margin: 0;
+            border: none;
+            width: 100%;
+            transition: color 0.3s ease;
+        }
+        .index{
+            display: flex;
+            flex-direction: row;
+        }
+        .card{
+            margin: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+        }
+        .posts{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 90px;
+            /* background-color: black; */
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .topbar{
+            /* background-color: black; */
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            position: fixed;
+            top: 0;
+            left: 110px;
+            height: 80px;
+            width: 100%;
+            z-index: 1000;
+        }
+        .label{
+            margin-left: 10px;
+            font-size: larger;
+            /* padding: 5px; */
+            font-family: 'Montserrat', sans-serif; 
+        }
+        .dp{
+            /* border: 2px solid black; */
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .info{
+            padding: 5px;
+            /* padding-bottom: 0px; */
+            display: flex;
+            flex-direction: row;
+            /* width: 10px;
+            height: 50px; */
+            align-items: center;
+            border-bottom: 1px solid rgb(122, 119, 119);
+        }
+        .use{
+            margin-left: 3px;
+        }
+        #inputPassword2::placeholder {
+            color: white; /* Change placeholder color */
+            opacity: 1; /* Ensure it is fully opaque */
+        }
+        .like{
+            margin: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .heart{
+            background-color: transparent;
+            border: transparent;    
+            font-weight: 100;
+        }
+        #but2{
+            margin-top: 30px;
+        }
+        .num{
+            /* scale: 2; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 100;
+
+        }
+        .comment{
+            padding: 10px;
+            color: white;
+            
+        }
+        .com{
+            background-color: white;
+            border: transparent;
+        }
+        #for_color{
+            color: white;
+        }
+        .home:hover,.notes:hover,.chatting:hover,.settings:hover,.newpost:hover{
+            background-color: white;
+            box-shadow: 0 0 20px #7fff00;
+        }
+        .but:hover{
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="index">
+        <div class="sidebar">
+            <div class="logo">
+                <form action="/home" method="get">
+                    <button type="submit" style="padding: 0px; border: none; background-color: black;">
+                        <img src="https://res.cloudinary.com/du1tos77l/image/upload/v1732711305/icon2_y88pp3.ico" alt="icon" style="width: 4rem;">
+                    </button>
+                </form>
+            </div>
+            <div class="name" style="  font-family: 'Montserrat', sans-serif;"><h5>LinkNest</h5></div>
+            <div class="options">
+            <div class="home">
+                <form action="/home" method="get">
+                    <button class="but"><i class="fa-solid fa-house"></i><span class="label">Home</span></button>
+                </form>
+                <div class="label"></div>
+                
+            </div>
+            <div class="notes">
+                <form action="/notes">
+                    <button class="but"><i class="fa-solid fa-note-sticky"></i><span class="label">Notes</span></button>
+                </form>
+                
+            </div>
+            <div class="chatting">
+                <form action="/chat" method="get"><button class="but"><i class="fa-solid fa-comments"></i><span class="label">Chat</span></button></form>
+            </div>
+            <div class="newpost">
+                <form action="/newpost" method="get">
+                    <button class="but"><i class="fa-solid fa-square-plus"></i><span class="label">New Post</span></button>
+                </form>
+            </div>
+            <div class="settings">
+                <form action="/settings" method="get">
+                    <button class="but"><i class="fa-solid fa-gear"></i><span class="label">Settings</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="main">
+            <div class="topbar">
+
+            </div>
+            <div class="posts">
+                    <div class="card" style="width: 30rem;">
+                        <div class="info" id="for_color" style="padding: 10px;">
+                            <div class="img"><img src="<%=mu_dp%>" alt="dp" class="dp" height="10rem"></div>
+                            <div class="use" style="  font-family: 'Montserrat', sans-serif;"><%=cpost.p_user%></div>
+                        </div>
+                        <div class="card-body" id="for_color">
+                            <p class="card-text" style="  font-family: 'Montserrat', sans-serif;"><%=cpost.description%></p>
+                          </div>
+                        <img src="<%=cpost.photo_link%>" class="card-img-top">
+                        
+                        <div class="like">  
+                            <div class="display">
+                                <form action="/home/<%=cpost._id%>/like?_method=PUT" method="post">
+                                    <button class="heart" style="background-color: transparent;"><i class="fa-solid fa-heart fa-2x" style="color: <%=bg%>;"></i></button>
+                                </form>
+                            </div>
+                            <div class="num" id="for_color">
+                                <h2 style="  font-family: 'Montserrat', sans-serif;"><%=cpost.likes.length%></h2>
+                            </div>
+                            
+                        </div>
+                        <div class="comment">
+                            <form class="row g-3" action="/home/<%=cpost._id%>/addcomment?_method=PUT" method="post">
+                                <div class="col-auto">
+                                  <input type="text" class="form-control" id="inputPassword2" placeholder="Add a comment..." name="newcom" style="background-color: transparent;">
+                                </div>
+                                <div class="col-auto" >
+                                  <button type="submit" class="btn btn-outline-light" style="background-color: transparent;   font-family: 'Montserrat', sans-serif; ">Add Comment</button> 
+                                </div>
+                              </form>
+                              <ul id="but2">
+                                <%comments_all.forEach(comment => {%>
+                                    <li style="  font-family: 'Montserrat', sans-serif;"><%=comment.user_com%> : <%=comment.text_com%></li>   
+                                <%});%>
+                              </ul>
+                        </div>
+                        <%if(cpost.p_user==pu){%>
+                        <div class="del">
+                            <form action="/home/<%=cpost._id%>?_method=DELETE" method="post">
+                                <button type="submit" class="btn btn-outline-light" style="  font-family: 'Montserrat', sans-serif;">Delete Post</button>
+                            </form>
+                        </div>
+                        <%}%>
+                      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

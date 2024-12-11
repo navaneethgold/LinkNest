@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LN:notes</title>
+    <link rel="icon" href="https://res.cloudinary.com/du1tos77l/image/upload/v1732711305/icon2_y88pp3.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Target the entire scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px; /* Width of the vertical scrollbar */
+            height: 7px; /* Height of the horizontal scrollbar */
+        }
+        
+        /* Track (the background of the scrollbar) */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Light gray background */
+            border-radius: 10px; /* Rounded edges for the track */
+        }
+        
+        /* Thumb (the draggable handle) */
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* Medium gray color */
+            border-radius: 10px; /* Rounded edges for the thumb */
+        }
+        
+        /* Hover effect for the thumb */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Darker gray when hovered */
+        }
+
+        body{
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            position: fixed; 
+            top: 0;         
+            left: 0;      
+            width: 230px;   
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            /* align-items: center; */
+            flex-direction: column;
+            background-color: black;
+            z-index: 2000;
+            border-right: 2px solid white;
+        }
+        .logo{
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 10px;
+            width: 230px;
+        }
+        .options{
+            width: 170px;   
+            height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            /* align-items: center; */
+            flex-direction: column;
+            padding-left: 50px;
+        }
+        .name{
+            font-family:'Times New Roman', Times, serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 230px;
+
+        }
+        .home,.notes,.chatting,.settings,.newpost{
+            color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+        .home:active,.notes:active,.chatting:active,.settings:active,.newpost:active{
+            transform: scale(0.95);
+        }
+        .but{
+            background-color: black;
+            color: white;
+            padding: 0;
+            margin: 0;
+            border: 1px solid black;
+        }
+        .index{
+            display: flex;
+            flex-direction: row;
+        }
+        .card{
+            margin: 15px;
+            /* border-bottom: 1px solid rgb(122, 119, 119); */
+            background-color: black;
+        }
+        .posts{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 90px;
+            background-color: black;
+        }
+        #inputPassword2::placeholder {
+            color: white; /* Change placeholder color */
+            opacity: 1; /* Ensure it is fully opaque */
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .topbar{
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 110px;
+            height: 80px;
+            width: 100%;
+            z-index: 1000;
+        }
+        .label{
+            /* display: none; */
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: larger;
+        }
+        .addnote{
+            margin-top: 100px;
+            color: white;
+            padding: 8px;
+            background-color: white;
+            width: 230px;
+            display: flex;
+            justify-content: center;
+            border-radius: 30px;
+            margin-left: 0px;
+        }
+        .addnote:hover,label:hover{
+            cursor: pointer;
+        }
+        .pure{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            color: black;
+        }
+        #an{
+            padding: 0;
+            border: none;
+            background-color: white;
+        }
+        .allnotes{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 250px;
+        }
+        .card{
+            color: white;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
+        .card{
+            margin: 20px;
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10px;
+            border-radius: 10%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover{
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(121, 119, 119, 0.2);
+        }
+        .allno{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* gap: 20px; */
+        }
+        /* .allnotes{
+            width: 1000px;
+            height: 550px;
+            margin-top: 100px;
+            background-color: white;
+        } */
+    </style>
+</head>
+<body>
+    <div class="index">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/du1tos77l/image/upload/v1732711305/icon2_y88pp3.ico" alt="icon" style="width: 4rem;">
+            </div>
+            <div class="name"><h5>LinkNest</h5></div>
+            <div class="options">
+            <div class="home">
+                <form action="/home" method="get">
+                    <button class="but"><i class="fa-solid fa-house"></i><span class="label">Home</span></button>
+                </form>
+                
+            </div>
+            <div class="notes">
+                <form action="/notes">
+                    <button class="but"><i class="fa-solid fa-note-sticky"></i><span class="label">Notes</span></button>
+                </form>
+                
+            </div>
+            <div class="chatting">
+                <form action="/chat" method="get"><button class="but"><i class="fa-solid fa-comments"></i><span class="label">Chat</span></button></form>
+            </div>
+            <div class="newpost">
+                <form action="/newpost" method="get">
+                    <button class="but"><i class="fa-solid fa-square-plus"></i><span class="label">New Post</span></button>
+                </form>
+            </div>
+            <div class="todolist">
+                <form action="/todolist" method="get">
+                    <button class="but"><i class="fa-solid fa-list-check"></i><span class="label">ToDoList</span></button>
+                </form>
+            </div>
+            <div class="settings">
+                <form action="/settings" method="get">
+                    <button class="but"><i class="fa-solid fa-gear"></i><span class="label">Settings</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="main">
+            <div class="topbar">
+
+            </div>
+            <div class="allnotes">
+                <div class="addnote">
+                    <form action="/todolist/newtodo" method="get">
+                        <button type="submit" id="an">
+                            <div class="pure">
+                                <div class="add"><i class="fa-solid fa-plus"></i></div>
+                                <div class="lab"><label for="note">Add Tasks of the Day</label></div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+                <div class="allno">
+                    <%let ind=0;%>
+                    <%for(const note of alltodos){%>
+                    <div class="card" style="width: 18rem;">
+                        <form action="/edit/<%=note.username%>" method="get">
+                            <button type="submit" style="padding: 0px; border: none; background-color: black; color: white;"><h5 class="card-title"><%=note.username%></h5></button>
+                        </form>
+                        <img src="<%=user_f[ind]%>" class="card-img-top" alt="dp" style="height: 10rem;">
+                        <div class="card-body">
+                          <p class="card-text"><%=note.title%></p>
+                          <%if(nameuser.username!=note.user_note){%>
+                          <form action="/chat/<%=note.user_note%>" method="get">
+                            <button class="btn btn-outline-light" type="submit">Reply</button>
+                          </form>
+                          <%}else{%>
+                            <form action="/note/delete?_method=DELETE" method="post">
+                                <button class="btn btn-outline-light" type="submit">Delete</button>
+                            </form>
+                           <%}%>
+                        </div>
+                      </div>
+                      <%ind+=1%>
+                    <%}%>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
